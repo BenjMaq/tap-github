@@ -621,7 +621,7 @@ def get_all_pull_requests(schemas, repo_path, state, mdata):
         with metrics.record_counter('reviews') as reviews_counter:
             for response in authed_get_all_pages(
                 'pull_requests',
-                '{}/repos/{}/pulls?state=all&sort=updated&direction=desc'.format(github_api_endpoint, repo_path)
+                '{}/repos/{}/pulls?state=all&sort=updated&direction=desc&per_page=5'.format(github_api_endpoint, repo_path)
             ):
                 pull_requests = response.json()
                 extraction_time = singer.utils.now()
